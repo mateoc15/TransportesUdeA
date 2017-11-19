@@ -4,10 +4,14 @@
 --
 -- Servidor: 127.0.0.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Tiempo de generación: 01-12-2016 a las 01:47:59kkkmmjj
 =======
 -- Tiempo de generación: 01-12-2016 a las 01:47:59kkkmmjjmm
 >>>>>>> IngresarAlSistema
+=======
+-- Tiempo de generación: 01-12-2016 a las 01:47:59kkkmmjjmmff
+>>>>>>> CerrarSesion
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
