@@ -1,0 +1,111 @@
+<div class="container">
+<div class="row" style="width:25%;">
+<h2>Register</h2>
+  
+	<div class="btn-group form-group" data-toggle="buttons" >
+	<input type="radio" name="type" ng-model="type" value="user" checked > Usuario
+	<input type="radio" name="type" ng-model="type" value="employee"> Empleado
+	</div>
+	
+	 
+<!--     <div ng-show="type == 'employee'" ng-include="'../resources/views/registerEmployee.html'"></div>  -->
+<!-- 	<div ng-show="type == 'user'" ng-include="'../resources/views/registerUser.html'"></div>			   -->
+     <div ng-show="type == 'employee'">
+       
+    <form name="form" ng-submit="register()" role="form">
+
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input type="number" name="password" id="id" class="form-control" ng-model="id" placeholder="Cedula" required />
+            <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">Cedula is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="name" placeholder="Name" required />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="lastname" placeholder="Last Name" required />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <input type="email" name="email" id="email" class="form-control" ng-model="email" placeholder="Email" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input type="password" minlength=8 name="password" id="password" class="form-control" ng-model="pass" placeholder="Password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+
+              <div  class="form-group check-element animate-show" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input  type="number" name="salary" id="salary" class="form-control" ng-model="salary" placeholder="Salary" required />
+            <span ng-show="form.salary.$dirty && form.salary.$error.required" class="help-block">City is required</span>
+        </div>
+			
+			
+			<br>
+        <div class="form-actions">
+            <button type="submit"  class="btn btn-primary">Register</button>
+            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <input type="reset" class="btn btn-primary">
+            <a href="#/login" class="btn btn-link">Cancel</a>
+            
+        </div>
+        <br>
+        <p>{{resultado}}</p>
+
+    </form>
+     </div>
+     
+     
+     <div ng-show="type == 'user'">
+      
+    <form name="formUser" ng-submit="register()" >
+
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input type="number" name="id" id="id" class="form-control" ng-model="id" placeholder="Cedula" required />
+            <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">Cedula is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="name" placeholder="Name" required />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="lastname" placeholder="Last Name" required />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <input type="email" name="email" id="email" class="form-control" ng-model="email" placeholder="Email" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input type="password" minlength=8 name="password" id="password" class="form-control" ng-model="pass" placeholder="Password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+  
+              <div  class="form-group check-element animate-show" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input type="number"  name="phone" id="phone" class="form-control" ng-model="phone" placeholder="Phone" required />
+            <span ng-show="form.phone.$dirty && form.phone.$error.required" class="help-block">Phone is required</span>
+        </div>
+              <div class="form-group check-element animate-show" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input type="text" name="city" id="city" class="form-control" ng-model="city" placeholder="City" required />
+            <span ng-show="form.city.$dirty && form.city.$error.required" class="help-block">City is required</span>
+			
+			
+			<br>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary"> <!-- ng-disabled="form.$invalid || vm.dataLoading" -->Register</button>
+            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <input type="reset" class="btn btn-primary">
+            <a href="#/login" class="btn btn-link">Cancel</a>
+            
+        </div>
+
+        <br>
+        <p>{{resultado}}</p>
+
+    </form>
+     </div>
+
+ </div>
+ </div>

@@ -1,0 +1,50 @@
+<div class="container">
+<h1>Reportes</h1>
+<div controller="demoController">
+</div>
+<div class="row">
+ 	<table ng-show="lista" class="table table-hover">
+ 	   <tr>
+ 	     <td><h3>Fecha</h3></td>
+ 	     <td><h3>Descripcion</h3></td>
+ 	     <td><h3>tipo de reporte</h3></td>
+ 	     <td><h3>Empleado</h3></td>
+ 	     <td><h3>Respuesta</h3></td>
+ 	   </tr>
+ 	   <tr ng-click="detalles(report)" class="{{report.class}}" ng-repeat="report in lista">
+ 	     <td>{{report.createDate}}</td>
+ 	     <td>{{report.description}}</td>
+ 	     <td>{{report.reportType}}</td>
+ 	     <td>{{report.employee}}</td>
+ 	     <td><p ng-show="report.response">SI</p><p ng-show="!report.response">NO</p></td>
+ 	   </tr>
+	</table>
+	<div ng-show="vacio">
+	<h3>No Hay Reportes Disponibles</h3>
+	</div>
+	<select class="selectpicker" data-style="btn-primary">
+		  <option>Peticion</option>
+		  <option>Queja</option>
+		  <option>Reclamo</option>
+		  <option>Solicitud</option>
+		</select>
+	<form  ng-submit="crear()" >
+	 <h3>Crear Reporte</h3>
+     <div class="form-group">
+        <label>Tipo: </label>
+		<select class="form-control" ng-model="type">
+		  <option value="1">Peticion</option>
+		  <option value="2">Queja</option>
+		  <option value="3">Reclamo</option>
+		  <option value="4">Solicitud</option>
+		</select>
+	</div>
+    <div class="form-group">
+      <textarea class="form-control" style="resize: none;" rows="5" ng-model="description" placeholder="Descripcion" required></textarea>
+    </div>
+   	  <div class="form-actions">
+           <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Enviar</button>
+       </div>
+  </form>
+</div>
+</div>

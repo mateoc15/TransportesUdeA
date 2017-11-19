@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TransportesUdeaService">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="TransportesUdea.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/TransportesUdea/TransportesUdea">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/ProyectoIngWebService/build/classes"/>
+        <property name="context-root" value="ProyectoTransportesUdeaService"/>
+    </wb-module>
+</project-modules>
