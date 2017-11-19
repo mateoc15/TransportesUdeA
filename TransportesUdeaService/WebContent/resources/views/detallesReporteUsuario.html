@@ -1,0 +1,31 @@
+<div class="container">
+<h1>Reportes</h1>
+<div class="row">
+ 	<table class="table">
+ 	   <tr>
+ 	     <td><h3>Fecha</h3></td>
+ 	     <td><h3>tipo de reporte</h3></td>
+ 	     <td><h3>Empleado</h3></td>
+ 	   </tr>
+ 	   <tr class="{{report.class}}" >
+ 	     <td>{{report.createDate}}</td>
+ 	     <td>{{report.reportType}}</td>
+ 	     <td>{{report.employee}}</td>
+ 	   </tr>
+ 	    <tr>
+ 	     <td><h3>Descripcion</h3></td>
+ 	   </tr>
+ 	   <tr class="{{report.class}}" >
+ 	     <td colspan="3">{{report.description}}</td>
+ 	   </tr>
+ 	      <tr>
+ 	     <td><h3>Respuesta</h3></td>
+ 	   </tr>
+ 	   <tr class="{{report.class}}" >
+ 	     <td colspan="3">{{report.response}}</td>
+ 	   </tr>
+	</table>
+	<a href="#/verReportesUsuario">Atras</a>
+</div>
+
+</div>

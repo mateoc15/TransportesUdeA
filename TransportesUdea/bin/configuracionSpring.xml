@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+<context:property-placeholder location="classpath:/co/edu/udea/TransportesUdea/properties/Connection.properties" />
+		
+<!-- 	se crea el DriverManagerDataSource para obtener el acceso a la base de datos	 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://${Connection.IP_HOST}:${Connection.BD_PORT}/${Connection.BD_NAME}"></property>
+		<property name="username" value="${Connection.BD_USER}"></property>
+		<property name="password" value="${Connection.BD_PASS}"></property>
+	</bean>
+	
+<!-- 		a partir del DriverManagerDataSource creamos un sessionFactory utilizando Hibernate -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mappingResources">
+			<list>
+				<value>co\edu\udea\TransportesUdea\mapping\Employee.hbm.xml</value>
+				<value>co\edu\udea\TransportesUdea\mapping\Report.hbm.xml</value>
+				<value>co\edu\udea\TransportesUdea\mapping\ReportType.hbm.xml</value>
+				<value>co\edu\udea\TransportesUdea\mapping\User.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect"> org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql" >true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- Creamos los beas para inyectar el sessionFactory a la implementacion de los Daos -->
+	<bean id="employeeDao" class="co.edu.udea.TransportesUdea.dao.Impl.EmployeeDaoImpl">
+		<!-- inyeccion de sessionFactory a employeeDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="userDao" class="co.edu.udea.TransportesUdea.dao.Impl.UserDaoImpl">
+		<!-- inyeccion de sessionFactory a employeeDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="reportDao" class="co.edu.udea.TransportesUdea.dao.Impl.ReportDaoImpl">
+		<!-- inyeccion de sessionFactory a employeeDao -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="employeeBL" class="co.edu.udea.TransportesUdea.bl.Impl.EmployeeBLImpl">
+		<constructor-arg name="EmployeeDao" ref="employeeDao"></constructor-arg>
+	</bean>
+	
+	<bean id="userBL" class="co.edu.udea.TransportesUdea.bl.Impl.UserBLImpl">
+		<constructor-arg name="usuarioDao" ref="userDao"></constructor-arg>
+	</bean>
+	
+	<bean id="reportBL" class="co.edu.udea.TransportesUdea.bl.Impl.ReportBLImpl">
+		<constructor-arg name="reportDao" ref="reportDao"></constructor-arg>
+		<constructor-arg name="usuarioDao" ref="userDao"></constructor-arg>
+		<constructor-arg name="employeeDao" ref="employeeDao"></constructor-arg>
+	</bean>
+	
+<!-- Cuando se inicie la aplicación buscara clases, posibles servicios web o anotaciones que son necesarias para se cargadas en este paquete -->
+<context:component-scan base-package="co.edu.udea.TranportesUdea.service"></context:component-scan>
+
+</beans>
