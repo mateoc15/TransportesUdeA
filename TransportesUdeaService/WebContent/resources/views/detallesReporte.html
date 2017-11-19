@@ -1,0 +1,33 @@
+<div class="container">
+<h1>Reportes</h1>
+<div class="row">
+ 	<table class="table">
+ 	   <tr>
+ 	     <td><h3>Fecha</h3></td>
+ 	     <td><h3>tipo de reporte</h3></td>
+ 	     <td><h3>Usuario</h3></td>
+ 	   </tr>
+ 	   <tr class="{{report.class}}" >
+ 	     <td>{{report.createDate}}</td>
+ 	     <td>{{report.reportType}}</td>
+ 	     <td>{{report.user}}</td>
+ 	   </tr>
+ 	    <tr>
+ 	     <td><h3>Descripcion</h3></td>
+ 	   </tr>
+ 	   <tr class="{{report.class}}" >
+ 	     <td colspan="3">{{report.description}}</td>
+ 	   </tr>
+	</table>
+	<form  ng-submit="actualizar()" >
+    <div class="form-group">
+      <textarea class="form-control" style="resize: none;" rows="5" ng-model="response" placeholder="Respuesta" required></textarea>
+    </div>
+   	  <div class="form-actions">
+           <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Responder</button>
+           <a href="#/verReportes">Cancel</a>
+       </div>
+  </form>
+</div>
+
+</div>
