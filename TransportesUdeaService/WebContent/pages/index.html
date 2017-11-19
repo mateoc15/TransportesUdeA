@@ -1,0 +1,71 @@
+<!-- Pagina de inicio de la aplicacion -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inicio</title>
+
+<!-- Archivos javascript usados -->
+<!--  
+<script type="text/javascript" src="http://localhost:8080/ProyectoIngWebService/resources/js/angular.min.js"></script>
+<script type="text/javascript" src="http://localhost:8080/ProyectoIngWebService/resources/js/user.js"></script>
+<script type="text/javascript" src="http://localhost:8080/ProyectoIngWebService/resources/bootstrap/js/bootstrap.min.js"></script>
+-->
+
+<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.0/css/bootstrap-select.min.css">
+
+<!--  css app -->
+<link rel="stylesheet" href="../resources/css/app.css">
+<link rel="stylesheet" href="../resources/css/ngDialog.css">
+<link rel="stylesheet" href="../resources/css/ngDialog-plain.css">
+
+</head>
+
+<body ng-app="app">
+    <div class="header"></div>
+    <div ng-if="header == 'offline'" ng-include="'../resources/views/templates/headerOffline.html'"></div>
+    <div ng-if="header == 'employee'" ng-include="'../resources/views/templates/headerEmployee.html'"></div>
+    <div ng-if="header == 'user'" ng-include="'../resources/views/templates/headerUser.html'"></div>
+    <div ui-view></div>
+    <div ng-include="'../resources/views/templates/footer.html'"></div>
+    
+     <!-- Archivos javascript usados -->
+
+<!-- Angular -->
+<script type="text/javascript" src="../resources/js/lib/angular.min.js"></script>
+<script type="text/javascript" src="../resources/js/lib/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="../resources/js/lib/angular-animate.js"></script>
+<script type="text/javascript" src="../resources/js/lib/angular-touch.js"></script>
+
+<!-- app -->
+<script type="text/javascript" src="../resources/js/lib/app.js"></script>
+
+<!-- Controllers -->
+<script type="text/javascript" src="../resources/js/controllers/HomeController.js"></script>
+<script type="text/javascript" src="../resources/js/controllers/login.js"></script>
+<script type="text/javascript" src="../resources/js/controllers/register.js"></script>
+<script type="text/javascript" src="../resources/js/controllers/reporte.js"></script>
+
+
+<!-- Services -->
+<script type="text/javascript" src="../resources/js/services/user.js"></script>
+<script type="text/javascript" src="../resources/js/services/employee.js"></script>
+<script type="text/javascript" src="../resources/js/services/reporte.js"></script>
+
+<!-- jQuery -->
+<script type="text/javascript" src="../resources/js/jquery/jquery-3.1.1.min.js"></script>
+
+<!-- bootstrap -->
+<script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/bootstrap/js/ui-bootstrap.min.js"></script>
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.0/js/bootstrap-select.min.js"></script>
+
+
+</body>
+</html>

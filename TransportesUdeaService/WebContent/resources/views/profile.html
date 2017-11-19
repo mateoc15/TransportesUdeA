@@ -1,0 +1,69 @@
+<div class="container">
+<div class="row" style="width:25%;" >
+<h2>Perfil</h2>
+<h4>Cambie los datos que desea actualizar</h4>
+	 
+<!--     <div ng-show="type == 'employee'" ng-include="'../resources/views/registerEmployee.html'"></div>  -->
+<!-- 	<div ng-show="type == 'user'" ng-include="'../resources/views/registerUser.html'"></div>			   -->
+     <div ng-show="currentUser.tipo == 'employee'" >
+       
+    <form name="form" ng-submit="update()" role="form">
+        <div class="form-group" >
+            <input type="email" name="email" id="email" class="form-control" ng-model="emailUpdate" placeholder="Email"  />
+        </div>
+        <div class="form-group" >
+            <input type="password" minlength=8 name="password" id="password" class="form-control" ng-model="passUpdate" placeholder="Password"  />
+        </div>
+
+              <div  class="form-group check-element animate-show" >
+            <input  type="number" name="salary" id="salary" class="form-control" ng-model="salaryUpdate" placeholder="Salary"  />
+
+        </div>
+			
+			
+			<br>
+        <div class="form-actions">
+            <button type="submit"  class="btn btn-primary">Actualizar</button>
+            <input type="reset" class="btn btn-primary">
+            
+        </div>
+        <br>
+        <p>{{resultado}}</p>
+
+    </form>
+     </div>
+     
+     
+     <div ng-show="currentUser.tipo == 'user'">
+      
+    <form name="formUser" ng-submit="update()" >
+        <div class="form-group">
+            <input type="email" name="email" id="email" class="form-control" ng-model="emailUpdate" placeholder="Email"  />
+        </div>
+        <div class="form-group" >
+            <input type="password" minlength=8 name="password" id="password" class="form-control" ng-model="passUpdate" placeholder="Password"  />
+        </div>
+  
+              <div  class="form-group check-element animate-show" >
+            <input type="number"  name="phone" id="phone" class="form-control" ng-model="phoneUpdate" placeholder="Phone"  />
+        </div>
+              <div class="form-group check-element animate-show" >
+            <input type="text" name="city" id="city" class="form-control" ng-model="cityUpdate" placeholder="City"  />
+
+			
+			
+			<br>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary"> <!-- ng-disabled="form.$invalid || vm.dataLoading" -->Actualizar</button>
+            <input type="reset" class="btn btn-primary">
+            
+        </div>
+
+        <br>
+        <p>{{resultado}}</p>
+
+    </form>
+     </div>
+
+ </div>
+ </div>

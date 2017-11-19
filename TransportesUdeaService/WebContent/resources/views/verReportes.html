@@ -1,0 +1,22 @@
+<div class="container">
+<h1>Reportes</h1>
+<div class="row">
+ 	<table ng-show="lista" class="table table-hover">
+ 	   <tr>
+ 	     <td><h3>Fecha</h3></td>
+ 	     <td><h3>Descripcion</h3></td>
+ 	     <td><h3>tipo de reporte</h3></td>
+ 	     <td><h3>Usuario</h3></td>
+ 	   </tr>
+ 	   <tr ng-click="detalles(report)" class="{{report.class}}" ng-repeat="report in lista">
+ 	     <td>{{report.createDate}}</td>
+ 	     <td>{{report.description}}</td>
+ 	     <td>{{report.reportType}}</td>
+ 	     <td>{{report.user}}</td>
+ 	   </tr>
+	</table>
+	<div ng-show="vacio">
+	<h3>No Hay Reportes Disponibles</h3>
+	</div>
+</div>
+</div>
